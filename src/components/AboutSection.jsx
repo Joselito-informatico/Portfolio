@@ -80,7 +80,7 @@ export default function AboutSection() {
                 alt="José Le Blanc — Ingeniero Civil en Computación e Informática"
                 loading="lazy"
                 className="w-full object-cover object-top transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-[1.02]"
-                style={{ maxHeight: '320px', display: 'block' }}
+                style={{ height: '480px', display: 'block', objectPosition: 'top center' }}
               />
               {/* Overlay sutil */}
               <div
@@ -214,44 +214,29 @@ export default function AboutSection() {
             </h4>
             <div className="flex flex-col gap-4">
               {[
-                { degree: 'Ingeniero Civil en Computación e Informática', note: 'Aprobado por unanimidad', highlight: true },
-                { degree: 'Ingeniero de Ejecución en Computación e Informática', note: 'Aprobado con distinción', highlight: false },
-                { degree: 'Licenciado en Ciencias de la Ingeniería', note: null, highlight: false },
-              ].map(({ degree, note, highlight }) => (
+                { degree: 'Ingeniero Civil en Computación e Informática', highlight: true },
+                { degree: 'Ingeniero de Ejecución en Computación e Informática', highlight: false },
+                { degree: 'Licenciado en Ciencias de la Ingeniería', highlight: false },
+              ].map(({ degree, highlight }) => (
                 <div
                   key={degree}
-                  className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 pb-4"
+                  className="flex items-start gap-3 pb-4"
                   style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}
                 >
-                  <div className="flex items-start gap-3">
-                    <div
-                      className="shrink-0 w-1 h-1 rounded-full mt-2"
-                      style={{ backgroundColor: highlight ? 'var(--color-accent)' : 'rgba(255,255,255,0.2)' }}
-                    />
-                    <span
-                      className="text-sm"
-                      style={{
-                        color: highlight ? 'var(--color-text)' : 'rgba(232,232,232,0.7)',
-                        fontFamily: 'DM Sans, sans-serif',
-                        fontWeight: highlight ? '500' : '400',
-                      }}
-                    >
-                      {degree}
-                    </span>
-                  </div>
-                  {note && (
-                    <span
-                      className="text-xs shrink-0 px-2 py-0.5"
-                      style={{
-                        color: 'var(--color-accent)',
-                        border: '1px solid rgba(0,255,136,0.2)',
-                        fontFamily: 'DM Sans, sans-serif',
-                        whiteSpace: 'nowrap',
-                      }}
-                    >
-                      {note}
-                    </span>
-                  )}
+                  <div
+                    className="shrink-0 w-1 h-1 rounded-full mt-2"
+                    style={{ backgroundColor: highlight ? 'var(--color-accent)' : 'rgba(255,255,255,0.2)' }}
+                  />
+                  <span
+                    className="text-sm"
+                    style={{
+                      color: highlight ? 'var(--color-text)' : 'rgba(232,232,232,0.7)',
+                      fontFamily: 'DM Sans, sans-serif',
+                      fontWeight: highlight ? '500' : '400',
+                    }}
+                  >
+                    {degree}
+                  </span>
                 </div>
               ))}
             </div>
