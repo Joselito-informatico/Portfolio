@@ -1,8 +1,9 @@
 import NavBar from './components/NavBar'
 import HeroSection from './components/HeroSection'
+import ProjectsSection from './components/ProjectsSection'
 
-// Las siguientes secciones se implementarán en sesiones próximas:
-// import ProjectsSection from './components/ProjectsSection'
+// Próximas secciones:
+// import AboutSection from './components/AboutSection'
 // import AboutSection from './components/AboutSection'
 // import SkillsSection from './components/SkillsSection'
 // import ContactSection from './components/ContactSection'
@@ -14,15 +15,7 @@ function App() {
       <main>
         <HeroSection />
 
-        {/* Stubs — reemplazar con los componentes reales */}
-        <section
-          id="projects"
-          className="min-h-screen flex items-center justify-center"
-        >
-          <p style={{ color: 'var(--color-muted)', fontFamily: 'DM Sans, sans-serif' }}>
-            ProjectsSection — próximamente
-          </p>
-        </section>
+        <ProjectsSection />
 
         <section
           id="about"
