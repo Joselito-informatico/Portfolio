@@ -56,7 +56,7 @@ export default function AboutSection() {
         transition={{ duration: 0.5 }}
       >
         <span className="text-xs font-semibold tracking-[0.22em] uppercase clr-accent">
-          03 — Sobre mí
+          04 — Sobre mí
         </span>
         <div className="h-px w-12" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
       </motion.div>

@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const NAV_LINKS = [
-  { label: 'Proyectos', href: '#projects' },
+  { label: 'Experiencia', href: '#experience' },
+  { label: 'Proyectos',   href: '#projects' },
   { label: 'Sobre mí',  href: '#about' },
   { label: 'Skills',    href: '#skills' },
   { label: 'Contacto', href: '#contact' },

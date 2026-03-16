@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import ProjectCard from './ProjectCard'
+import ProjectCard, { WIPCard } from './ProjectCard'
 import { PROJECTS } from '../constants/projects'
 
 const containerVariants = {
@@ -10,12 +10,12 @@ const containerVariants = {
 export default function ProjectsSection() {
   const shouldReduce = useReducedMotion()
   const [featured, ...rest] = PROJECTS
+  const active = rest.filter((p) => !p.wip)
+  const wip    = rest.filter((p) =>  p.wip)
 
   return (
-    <section
-      id="projects"
-      className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 md:py-28 lg:py-36"
-    >
+    <section id="projects" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 md:py-28 lg:py-36">
+
       {/* Header */}
       <motion.div
         className="mb-14"
@@ -26,11 +26,10 @@ export default function ProjectsSection() {
       >
         <div className="flex items-center gap-4 mb-4">
           <span className="text-xs font-semibold tracking-[0.22em] uppercase clr-accent">
-            02 — Proyectos
+            03 — Proyectos
           </span>
           <div className="h-px flex-1 max-w-[48px]" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
         </div>
-
         <h2 className="font-syne text-3xl sm:text-4xl md:text-5xl font-black leading-tight clr-text">
           Lo que he construido
         </h2>
@@ -47,8 +46,11 @@ export default function ProjectsSection() {
         <ProjectCard featured {...featured} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {rest.map((project) => (
+          {active.map((project) => (
             <ProjectCard key={project.id} {...project} />
+          ))}
+          {wip.map((project) => (
+            <WIPCard key={project.id} {...project} />
           ))}
         </div>
       </motion.div>

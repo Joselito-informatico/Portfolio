@@ -167,3 +167,45 @@ function NormalCard({ title, tagline, description, tech, github, live }) {
 export default function ProjectCard({ featured = false, ...props }) {
   return featured ? <FeaturedCard {...props} /> : <NormalCard {...props} />
 }
+
+// ── WIP Card ─────────────────────────────────────────────────────────
+export function WIPCard({ title, tagline, description, tech }) {
+  return (
+    <motion.article
+      variants={cardVariants}
+      className="relative flex flex-col overflow-hidden"
+      style={{
+        ...CARD_BASE,
+        border: '1px solid rgba(255,255,255,0.04)',
+        opacity: 0.7,
+      }}
+    >
+      {/* Badge */}
+      <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-semibold tracking-[0.15em] uppercase"
+        style={{ backgroundColor: 'rgba(0,255,136,0.08)', border: '1px solid rgba(0,255,136,0.2)', color: 'var(--color-accent)' }}
+      >
+        <span className="w-1 h-1 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent)' }} />
+        En desarrollo
+      </div>
+
+      <div className="p-5 sm:p-6 md:p-7 flex flex-col flex-1">
+        <h3 className="font-syne text-xl font-black leading-tight clr-text mb-2 pr-28">
+          {title}
+        </h3>
+        <p className="text-sm font-medium mb-3 clr-text" style={{ opacity: 0.55 }}>
+          {tagline}
+        </p>
+        <p className="text-sm leading-relaxed flex-1 mb-6 clr-muted">
+          {description}
+        </p>
+        <ul className="flex flex-wrap gap-2" aria-label="Tecnologías planificadas">
+          {tech.map((t) => (
+            <li key={t} className="text-xs font-medium px-3 py-1 clr-muted" style={{ border: '1px solid rgba(255,255,255,0.05)' }}>
+              {t}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </motion.article>
+  )
+}

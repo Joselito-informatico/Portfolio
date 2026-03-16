@@ -29,4 +29,15 @@ export const PROJECTS = [
     github: 'https://github.com/Joselito-informatico/SistemaTickets',
     live: null,
   },
+  {
+    id: 4,
+    title: 'MTG Marketplace',
+    tagline: 'Marketplace de singles Magic: The Gathering',
+    description:
+      'Plataforma de compraventa de cartas individuales con integración a Scryfall API para datos y precios en tiempo real. Carrito, historial de transacciones y panel de vendedor.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Scryfall API'],
+    github: null,
+    live: null,
+    wip: true,
+  },
 ]
