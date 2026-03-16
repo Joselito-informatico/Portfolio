@@ -1,10 +1,9 @@
 import NavBar from './components/NavBar'
 import HeroSection from './components/HeroSection'
 import ProjectsSection from './components/ProjectsSection'
+import AboutSection from './components/AboutSection'
 
 // Próximas secciones:
-// import AboutSection from './components/AboutSection'
-// import AboutSection from './components/AboutSection'
 // import SkillsSection from './components/SkillsSection'
 // import ContactSection from './components/ContactSection'
 
@@ -17,14 +16,7 @@ function App() {
 
         <ProjectsSection />
 
-        <section
-          id="about"
-          className="min-h-screen flex items-center justify-center"
-        >
-          <p style={{ color: 'var(--color-muted)', fontFamily: 'DM Sans, sans-serif' }}>
-            AboutSection — próximamente
-          </p>
-        </section>
+        <AboutSection />
 
         <section
           id="skills"
