@@ -4,14 +4,11 @@ import { PROJECTS } from '../constants/projects'
 
 const containerVariants = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.15 },
-  },
+  visible: { transition: { staggerChildren: 0.15 } },
 }
 
 export default function ProjectsSection() {
   const shouldReduce = useReducedMotion()
-
   const [featured, ...rest] = PROJECTS
 
   return (
@@ -19,7 +16,7 @@ export default function ProjectsSection() {
       id="projects"
       className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 md:py-28 lg:py-36"
     >
-      {/* Section header */}
+      {/* Header */}
       <motion.div
         className="mb-14"
         initial={shouldReduce ? false : { opacity: 0, y: 24 }}
@@ -28,22 +25,13 @@ export default function ProjectsSection() {
         transition={{ duration: 0.5 }}
       >
         <div className="flex items-center gap-4 mb-4">
-          <span
-            className="text-xs font-semibold tracking-[0.22em] uppercase"
-            style={{ color: 'var(--color-accent)', fontFamily: 'DM Sans, sans-serif' }}
-          >
+          <span className="text-xs font-semibold tracking-[0.22em] uppercase clr-accent">
             02 — Proyectos
           </span>
-          <div
-            className="h-px flex-1 max-w-[48px]"
-            style={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
-          />
+          <div className="h-px flex-1 max-w-[48px]" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
         </div>
 
-        <h2
-          className="text-4xl md:text-5xl font-black leading-tight"
-          style={{ fontFamily: 'Syne, sans-serif', color: 'var(--color-text)' }}
-        >
+        <h2 className="font-syne text-3xl sm:text-4xl md:text-5xl font-black leading-tight clr-text">
           Lo que he construido
         </h2>
       </motion.div>
@@ -56,10 +44,8 @@ export default function ProjectsSection() {
         viewport={{ once: true, margin: '-80px' }}
         className="flex flex-col gap-4"
       >
-        {/* Featured — fila completa */}
         <ProjectCard featured {...featured} />
 
-        {/* Grid 2 columnas */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {rest.map((project) => (
             <ProjectCard key={project.id} {...project} />
@@ -67,7 +53,7 @@ export default function ProjectsSection() {
         </div>
       </motion.div>
 
-      {/* Footer link a GitHub */}
+      {/* Footer */}
       <motion.div
         className="mt-12 flex justify-center"
         initial={shouldReduce ? false : { opacity: 0 }}
@@ -79,10 +65,7 @@ export default function ProjectsSection() {
           href="https://github.com/Joselito-informatico"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-medium transition-colors duration-200"
-          style={{ color: 'var(--color-muted)', fontFamily: 'DM Sans, sans-serif' }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
-          onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-muted)')}
+          className="text-sm font-medium clr-muted hover-text"
         >
           Ver todos los repositorios en GitHub →
         </a>

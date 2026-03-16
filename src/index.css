@@ -19,3 +19,22 @@ body {
   font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
 }
+
+/* ── Tipografía ─────────────────────────────── */
+/* Body ya hereda DM Sans — no repetir inline.  */
+/* Usar .font-syne para headings con Syne.       */
+.font-syne {
+  font-family: 'Syne', sans-serif;
+}
+
+/* ── Colores de texto ───────────────────────── */
+.clr-accent { color: var(--color-accent); }
+.clr-muted  { color: var(--color-muted); }
+.clr-text   { color: var(--color-text); }
+
+/* ── Hover de color (reemplaza onMouseEnter) ── */
+.hover-accent { transition: color 0.2s; }
+.hover-accent:hover { color: var(--color-accent); }
+
+.hover-text { transition: color 0.2s; }
+.hover-text:hover { color: var(--color-text); }

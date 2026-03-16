@@ -8,7 +8,6 @@ export const PROJECTS = [
     tech: ['React', 'Vite', 'TypeScript', 'Tailwind CSS'],
     github: 'https://github.com/Joselito-informatico/resumai-studio',
     live: 'https://cv-creator-one-sigma.vercel.app',
-    status: 'active',
   },
   {
     id: 2,
@@ -19,7 +18,6 @@ export const PROJECTS = [
     tech: ['React', 'Vite', 'PWA', 'NPM Workspaces'],
     github: 'https://github.com/Joselito-informatico/DnD-app',
     live: 'https://dnd-app-player.vercel.app',
-    status: 'active',
   },
   {
     id: 3,
@@ -30,6 +28,5 @@ export const PROJECTS = [
     tech: ['React', 'Node.js', 'Express', 'MongoDB'],
     github: 'https://github.com/Joselito-informatico/SistemaTickets',
     live: null,
-    status: 'completed',
   },
 ]

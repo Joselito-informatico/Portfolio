@@ -1,20 +1,28 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { Award, MapPin, Wifi, ArrowRight } from 'lucide-react'
+import { MapPin, Wifi, ArrowRight } from 'lucide-react'
+
+// Award removido — no se usaba en JSX
 
 const CERTIFICATIONS = [
-  { id: 1, title: 'Power BI Master', issuer: 'Platzi', date: 'Dic 2025', detail: 'Modelado de datos, DAX y RLS' },
-  { id: 2, title: 'Excel Intermedio', issuer: 'Platzi', date: 'Dic 2025', detail: 'Gestión avanzada de datos' },
-  { id: 3, title: 'CCNA: Introduction to Networks', issuer: 'Cisco', date: '2024', detail: 'Fundamentos de redes' },
-  { id: 4, title: 'Junior Cybersecurity Analyst', issuer: 'Cisco', date: '2024', detail: 'Análisis de seguridad informática' },
+  { id: 1, title: 'Power BI Master',                    issuer: 'Platzi',  date: 'Dic 2025',  detail: 'Modelado de datos, DAX y RLS' },
+  { id: 2, title: 'Excel Intermedio',                   issuer: 'Platzi',  date: 'Dic 2025',  detail: 'Gestión avanzada de datos' },
+  { id: 3, title: 'CCNA: Introduction to Networks',     issuer: 'Cisco',   date: '2024',       detail: 'Fundamentos de redes' },
+  { id: 4, title: 'Junior Cybersecurity Analyst',       issuer: 'Cisco',   date: '2024',       detail: 'Análisis de seguridad informática' },
   { id: 5, title: 'Acelerador de Carrera con Power BI', issuer: 'Zakidata', date: 'Feb 2024', detail: '8 horas — taller intensivo' },
 ]
 
 const AVAILABILITY = [
-  { label: 'Arica', icon: 'map' },
-  { label: 'Santiago', icon: 'map' },
-  { label: 'Puerto Montt', icon: 'map' },
-  { label: 'Remoto', icon: 'wifi' },
+  { label: 'Arica',             icon: 'map' },
+  { label: 'Santiago',          icon: 'map' },
+  { label: 'Puerto Montt',      icon: 'map' },
+  { label: 'Remoto',            icon: 'wifi' },
   { label: 'Traslado inmediato', icon: 'arrow' },
+]
+
+const EDUCATION = [
+  { degree: 'Ingeniero Civil en Computación e Informática',    highlight: true },
+  { degree: 'Ingeniero de Ejecución en Computación e Informática', highlight: false },
+  { degree: 'Licenciado en Ciencias de la Ingeniería',         highlight: false },
 ]
 
 const fadeUp = {
@@ -28,7 +36,7 @@ const stagger = {
 }
 
 function AvailabilityIcon({ type }) {
-  if (type === 'wifi') return <Wifi size={11} />
+  if (type === 'wifi')  return <Wifi      size={11} />
   if (type === 'arrow') return <ArrowRight size={11} />
   return <MapPin size={11} />
 }
@@ -47,19 +55,16 @@ export default function AboutSection() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <span
-          className="text-xs font-semibold tracking-[0.22em] uppercase"
-          style={{ color: 'var(--color-accent)', fontFamily: 'DM Sans, sans-serif' }}
-        >
+        <span className="text-xs font-semibold tracking-[0.22em] uppercase clr-accent">
           03 — Sobre mí
         </span>
         <div className="h-px w-12" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
       </motion.div>
 
-      {/* Grid principal: 5 columnas */}
+      {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-14 items-start">
 
-        {/* ── Columna izquierda ── */}
+        {/* Columna izquierda */}
         <motion.div
           className="md:col-span-1 lg:col-span-2 flex flex-col gap-7"
           variants={shouldReduce ? undefined : stagger}
@@ -67,9 +72,8 @@ export default function AboutSection() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {/* Foto con efecto */}
+          {/* Foto */}
           <motion.div variants={shouldReduce ? undefined : fadeUp} className="relative group">
-            {/* Marco decorativo offset */}
             <div
               className="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 w-full h-full pointer-events-none transition-all duration-500 group-hover:-bottom-3 group-hover:-right-3 sm:group-hover:-bottom-4 sm:group-hover:-right-4"
               style={{ border: '1px solid rgba(0,255,136,0.2)' }}
@@ -82,7 +86,6 @@ export default function AboutSection() {
                 className="w-full object-cover object-top transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-[1.02]"
                 style={{ height: '480px', display: 'block', objectPosition: 'top center' }}
               />
-              {/* Overlay sutil */}
               <div
                 className="absolute inset-0 transition-opacity duration-700 group-hover:opacity-0"
                 style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.3) 0%, transparent 60%)' }}
@@ -92,22 +95,19 @@ export default function AboutSection() {
 
           {/* Bio */}
           <motion.div variants={shouldReduce ? undefined : fadeUp}>
-            <h2
-              className="text-2xl sm:text-3xl md:text-4xl font-black leading-[1.05] mb-5"
-              style={{ fontFamily: 'Syne, sans-serif', color: 'var(--color-text)' }}
-            >
+            <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-black leading-[1.05] mb-5 clr-text">
               Construyo software
               <br />
-              <span style={{ color: 'var(--color-accent)' }}>que resuelve</span>
+              <span className="clr-accent">que resuelve</span>
               <br />
               problemas reales.
             </h2>
-            <p className="text-sm leading-relaxed mb-3" style={{ color: 'var(--color-muted)', fontFamily: 'DM Sans, sans-serif' }}>
+            <p className="text-sm leading-relaxed mb-3 clr-muted">
               Ingeniero Civil en Computación e Informática egresado de la Universidad de Tarapacá,
               Arica — graduado en 2025 con distinción en el título de Ejecución y aprobado por
               unanimidad en el grado Civil.
             </p>
-            <p className="text-sm leading-relaxed" style={{ color: 'var(--color-muted)', fontFamily: 'DM Sans, sans-serif' }}>
+            <p className="text-sm leading-relaxed clr-muted">
               Me especializo en Full-Stack MERN y analítica con Power BI. Me interesa la
               intersección entre ingeniería de software y decisiones estratégicas: sistemas
               que no solo funcionan, sino que generan información útil.
@@ -121,14 +121,8 @@ export default function AboutSection() {
             style={{ border: '1px solid rgba(255,255,255,0.06)', backgroundColor: 'var(--color-surface)' }}
           >
             <div className="flex items-center gap-2 mb-4">
-              <span
-                className="inline-block w-1.5 h-1.5 rounded-full animate-pulse"
-                style={{ backgroundColor: 'var(--color-accent)' }}
-              />
-              <span
-                className="text-xs font-semibold tracking-[0.18em] uppercase"
-                style={{ color: 'var(--color-accent)', fontFamily: 'DM Sans, sans-serif' }}
-              >
+              <span className="inline-block w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent)' }} />
+              <span className="text-xs font-semibold tracking-[0.18em] uppercase clr-accent">
                 Disponible ahora
               </span>
             </div>
@@ -136,15 +130,13 @@ export default function AboutSection() {
               {AVAILABILITY.map(({ label, icon }) => (
                 <span
                   key={label}
-                  className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 clr-text"
                   style={{
-                    color: 'var(--color-text)',
                     border: '1px solid rgba(255,255,255,0.09)',
-                    fontFamily: 'DM Sans, sans-serif',
                     backgroundColor: 'rgba(255,255,255,0.02)',
                   }}
                 >
-                  <span style={{ color: 'var(--color-accent)' }}>
+                  <span className="clr-accent">
                     <AvailabilityIcon type={icon} />
                   </span>
                   {label}
@@ -154,7 +146,7 @@ export default function AboutSection() {
           </motion.div>
         </motion.div>
 
-        {/* ── Columna derecha ── */}
+        {/* Columna derecha */}
         <motion.div
           className="md:col-span-1 lg:col-span-3 flex flex-col gap-5"
           variants={shouldReduce ? undefined : stagger}
@@ -162,37 +154,28 @@ export default function AboutSection() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {/* Rally — logro destacado */}
+          {/* Rally */}
           <motion.div
             variants={shouldReduce ? undefined : fadeUp}
             className="relative overflow-hidden p-6"
             style={{ backgroundColor: 'rgba(0,255,136,0.04)', border: '1px solid rgba(0,255,136,0.2)' }}
           >
-            {/* Línea acento top */}
             <div className="absolute top-0 left-0 w-16 h-px" style={{ backgroundColor: 'var(--color-accent)' }} />
             <div className="flex items-start gap-4">
               <div
-                className="shrink-0 w-11 h-11 flex items-center justify-center text-lg font-black"
-                style={{
-                  backgroundColor: 'rgba(0,255,136,0.1)',
-                  border: '1px solid rgba(0,255,136,0.2)',
-                  color: 'var(--color-accent)',
-                  fontFamily: 'Syne, sans-serif',
-                }}
+                className="font-syne shrink-0 w-11 h-11 flex items-center justify-center text-lg font-black clr-accent"
+                style={{ backgroundColor: 'rgba(0,255,136,0.1)', border: '1px solid rgba(0,255,136,0.2)' }}
               >
                 3°
               </div>
               <div>
-                <span
-                  className="text-xs font-semibold tracking-[0.18em] uppercase block mb-1"
-                  style={{ color: 'var(--color-accent)', fontFamily: 'DM Sans, sans-serif' }}
-                >
+                <span className="text-xs font-semibold tracking-[0.18em] uppercase block mb-1 clr-accent">
                   Logro destacado — 2025
                 </span>
-                <h3 className="text-base font-black mb-1.5" style={{ fontFamily: 'Syne, sans-serif', color: 'var(--color-text)' }}>
+                <h3 className="font-syne text-base font-black mb-1.5 clr-text">
                   Rally Latinoamericano de Innovación
                 </h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--color-muted)', fontFamily: 'DM Sans, sans-serif' }}>
+                <p className="text-sm leading-relaxed clr-muted">
                   3er lugar en categoría Impacto Social. Solución tecnológica para problemas
                   sociales complejos desarrollada bajo condiciones de alta presión.
                 </p>
@@ -206,18 +189,11 @@ export default function AboutSection() {
             className="p-6"
             style={{ backgroundColor: 'var(--color-surface)', border: '1px solid rgba(255,255,255,0.06)' }}
           >
-            <h4
-              className="text-xs font-semibold tracking-[0.2em] uppercase mb-5"
-              style={{ color: 'var(--color-muted)', fontFamily: 'DM Sans, sans-serif' }}
-            >
+            <h4 className="text-xs font-semibold tracking-[0.2em] uppercase mb-5 clr-muted">
               Educación — Universidad de Tarapacá · 2025
             </h4>
             <div className="flex flex-col gap-4">
-              {[
-                { degree: 'Ingeniero Civil en Computación e Informática', highlight: true },
-                { degree: 'Ingeniero de Ejecución en Computación e Informática', highlight: false },
-                { degree: 'Licenciado en Ciencias de la Ingeniería', highlight: false },
-              ].map(({ degree, highlight }) => (
+              {EDUCATION.map(({ degree, highlight }) => (
                 <div
                   key={degree}
                   className="flex items-start gap-3 pb-4"
@@ -231,7 +207,6 @@ export default function AboutSection() {
                     className="text-sm"
                     style={{
                       color: highlight ? 'var(--color-text)' : 'rgba(232,232,232,0.7)',
-                      fontFamily: 'DM Sans, sans-serif',
                       fontWeight: highlight ? '500' : '400',
                     }}
                   >
@@ -248,10 +223,7 @@ export default function AboutSection() {
             className="p-6"
             style={{ backgroundColor: 'var(--color-surface)', border: '1px solid rgba(255,255,255,0.06)' }}
           >
-            <h4
-              className="text-xs font-semibold tracking-[0.2em] uppercase mb-5"
-              style={{ color: 'var(--color-muted)', fontFamily: 'DM Sans, sans-serif' }}
-            >
+            <h4 className="text-xs font-semibold tracking-[0.2em] uppercase mb-5 clr-muted">
               Certificaciones
             </h4>
             <ul className="flex flex-col">
@@ -262,29 +234,13 @@ export default function AboutSection() {
                   style={{ borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.04)' }}
                 >
                   <div className="flex items-start gap-3">
-                    <div
-                      className="shrink-0 w-px h-full min-h-[32px] mt-1"
-                      style={{ backgroundColor: 'rgba(0,255,136,0.25)' }}
-                    />
+                    <div className="shrink-0 w-px h-full min-h-[32px] mt-1" style={{ backgroundColor: 'rgba(0,255,136,0.25)' }} />
                     <div>
-                      <span
-                        className="text-sm font-medium block leading-snug"
-                        style={{ color: 'var(--color-text)', fontFamily: 'DM Sans, sans-serif' }}
-                      >
-                        {cert.title}
-                      </span>
-                      <span
-                        className="text-xs mt-0.5 block"
-                        style={{ color: 'var(--color-muted)', fontFamily: 'DM Sans, sans-serif' }}
-                      >
-                        {cert.issuer} · {cert.detail}
-                      </span>
+                      <span className="text-sm font-medium block leading-snug clr-text">{cert.title}</span>
+                      <span className="text-xs mt-0.5 block clr-muted">{cert.issuer} · {cert.detail}</span>
                     </div>
                   </div>
-                  <span
-                    className="text-xs shrink-0 mt-0.5"
-                    style={{ color: 'rgba(255,255,255,0.25)', fontFamily: 'DM Sans, sans-serif' }}
-                  >
+                  <span className="text-xs shrink-0 mt-0.5" style={{ color: 'rgba(255,255,255,0.25)' }}>
                     {cert.date}
                   </span>
                 </li>
