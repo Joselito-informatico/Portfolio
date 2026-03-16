@@ -27,7 +27,7 @@ function FeaturedCard({ title, tagline, description, tech, github, live }) {
         style={{ backgroundColor: 'var(--color-accent)' }}
       />
 
-      <div className="p-8 md:p-10">
+      <div className="p-5 sm:p-8 md:p-10">
         {/* Header row */}
         <div className="flex items-start justify-between gap-4 mb-5">
           <div>
@@ -38,7 +38,7 @@ function FeaturedCard({ title, tagline, description, tech, github, live }) {
               Proyecto destacado
             </span>
             <h3
-              className="text-3xl md:text-4xl font-black leading-tight"
+              className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight"
               style={{ fontFamily: 'Syne, sans-serif', color: 'var(--color-text)' }}
             >
               {title}
@@ -147,7 +147,7 @@ function NormalCard({ title, tagline, description, tech, github, live }) {
         style={{ backgroundColor: 'var(--color-accent)' }}
       />
 
-      <div className="p-6 md:p-7 flex flex-col flex-1">
+      <div className="p-5 sm:p-6 md:p-7 flex flex-col flex-1">
         {/* Header */}
         <div className="flex items-start justify-between gap-3 mb-4">
           <h3

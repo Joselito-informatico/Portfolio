@@ -41,7 +41,7 @@ export default function NavBar() {
       transition={{ duration: 0.5, delay: 0.3 }}
     >
       <div
-        className="px-6 md:px-12 py-5 flex justify-between items-center transition-all duration-300"
+        className="px-5 sm:px-6 md:px-12 py-5 flex justify-between items-center transition-all duration-300"
         style={{
           backgroundColor: scrolled ? 'rgba(10,10,10,0.88)' : 'transparent',
           backdropFilter: scrolled ? 'blur(14px)' : 'none',

@@ -17,7 +17,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="px-6 md:px-16 lg:px-24 py-28 md:py-36"
+      className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 md:py-28 lg:py-36"
     >
       {/* Section header */}
       <motion.div

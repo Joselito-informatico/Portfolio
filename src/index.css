@@ -10,10 +10,12 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
 }

@@ -34,7 +34,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24 overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center px-5 sm:px-8 md:px-16 lg:px-24 overflow-hidden pt-24 md:pt-0"
     >
       {/* Dot grid background */}
       <div
@@ -84,7 +84,7 @@ export default function HeroSection() {
         {/* Name */}
         <motion.h1
           variants={shouldReduce ? undefined : itemVariants}
-          className="text-6xl md:text-8xl lg:text-[7rem] font-black leading-none tracking-tight mb-5"
+          className="text-[2.75rem] sm:text-6xl md:text-8xl lg:text-[7rem] font-black leading-none tracking-tight mb-5"
           style={{ fontFamily: 'Syne, sans-serif', color: 'var(--color-text)' }}
         >
           José
@@ -95,10 +95,10 @@ export default function HeroSection() {
         {/* Typewriter role */}
         <motion.div
           variants={shouldReduce ? undefined : itemVariants}
-          className="flex items-center h-9 mb-7"
+          className="flex items-center h-8 sm:h-9 mb-6 sm:mb-7"
         >
           <span
-            className="text-xl md:text-2xl font-medium"
+            className="text-lg sm:text-xl md:text-2xl font-medium"
             style={{ color: 'var(--color-muted)', fontFamily: 'DM Sans, sans-serif' }}
           >
             {role}
@@ -113,7 +113,7 @@ export default function HeroSection() {
         {/* Bio */}
         <motion.p
           variants={shouldReduce ? undefined : itemVariants}
-          className="text-base md:text-lg max-w-lg leading-relaxed mb-10"
+          className="text-sm md:text-base lg:text-lg max-w-lg leading-relaxed mb-8 md:mb-10"
           style={{ color: 'var(--color-muted)', fontFamily: 'DM Sans, sans-serif' }}
         >
           Ingeniero Civil en Computación e Informática, Universidad de Tarapacá 2025.
@@ -123,7 +123,7 @@ export default function HeroSection() {
         {/* CTA buttons */}
         <motion.div
           variants={shouldReduce ? undefined : itemVariants}
-          className="flex flex-wrap items-center gap-4 mb-14"
+          className="flex flex-wrap items-center gap-3 sm:gap-4 mb-10 md:mb-14"
         >
           <a
             href="#projects"
@@ -160,7 +160,7 @@ export default function HeroSection() {
         {/* Social row */}
         <motion.div
           variants={shouldReduce ? undefined : itemVariants}
-          className="flex items-center gap-4"
+          className="flex items-center gap-3 sm:gap-4 flex-wrap"
         >
           <span
             className="text-xs tracking-[0.2em] uppercase"
@@ -183,7 +183,7 @@ export default function HeroSection() {
           </a>
           <a
             href="mailto:ji.leblanc.aravena@gmail.com"
-            className="text-xs font-medium transition-colors duration-200"
+            className="hidden sm:inline text-xs font-medium transition-colors duration-200"
             style={{ color: 'var(--color-muted)', fontFamily: 'DM Sans, sans-serif' }}
             onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
             onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-muted)')}

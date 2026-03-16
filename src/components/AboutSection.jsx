@@ -37,7 +37,7 @@ export default function AboutSection() {
   const shouldReduce = useReducedMotion()
 
   return (
-    <section id="about" className="px-6 md:px-16 lg:px-24 py-28 md:py-36">
+    <section id="about" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 md:py-28 lg:py-36">
 
       {/* Label */}
       <motion.div
@@ -57,11 +57,11 @@ export default function AboutSection() {
       </motion.div>
 
       {/* Grid principal: 5 columnas */}
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-14 items-start">
 
         {/* ── Columna izquierda ── */}
         <motion.div
-          className="lg:col-span-2 flex flex-col gap-7"
+          className="md:col-span-1 lg:col-span-2 flex flex-col gap-7"
           variants={shouldReduce ? undefined : stagger}
           initial="hidden"
           whileInView="visible"
@@ -71,7 +71,7 @@ export default function AboutSection() {
           <motion.div variants={shouldReduce ? undefined : fadeUp} className="relative group">
             {/* Marco decorativo offset */}
             <div
-              className="absolute -bottom-3 -right-3 w-full h-full pointer-events-none transition-all duration-500 group-hover:-bottom-4 group-hover:-right-4"
+              className="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 w-full h-full pointer-events-none transition-all duration-500 group-hover:-bottom-3 group-hover:-right-3 sm:group-hover:-bottom-4 sm:group-hover:-right-4"
               style={{ border: '1px solid rgba(0,255,136,0.2)' }}
             />
             <div className="relative overflow-hidden">
@@ -80,7 +80,7 @@ export default function AboutSection() {
                 alt="José Le Blanc — Ingeniero Civil en Computación e Informática"
                 loading="lazy"
                 className="w-full object-cover object-top transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-[1.02]"
-                style={{ maxHeight: '400px', display: 'block' }}
+                style={{ maxHeight: '320px', display: 'block' }}
               />
               {/* Overlay sutil */}
               <div
@@ -93,7 +93,7 @@ export default function AboutSection() {
           {/* Bio */}
           <motion.div variants={shouldReduce ? undefined : fadeUp}>
             <h2
-              className="text-3xl md:text-4xl font-black leading-[1.05] mb-5"
+              className="text-2xl sm:text-3xl md:text-4xl font-black leading-[1.05] mb-5"
               style={{ fontFamily: 'Syne, sans-serif', color: 'var(--color-text)' }}
             >
               Construyo software
@@ -156,7 +156,7 @@ export default function AboutSection() {
 
         {/* ── Columna derecha ── */}
         <motion.div
-          className="lg:col-span-3 flex flex-col gap-5"
+          className="md:col-span-1 lg:col-span-3 flex flex-col gap-5"
           variants={shouldReduce ? undefined : stagger}
           initial="hidden"
           whileInView="visible"
@@ -220,7 +220,7 @@ export default function AboutSection() {
               ].map(({ degree, note, highlight }) => (
                 <div
                   key={degree}
-                  className="flex items-start justify-between gap-4 pb-4"
+                  className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 pb-4"
                   style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}
                 >
                   <div className="flex items-start gap-3">
@@ -273,7 +273,7 @@ export default function AboutSection() {
               {CERTIFICATIONS.map((cert, i) => (
                 <li
                   key={cert.id}
-                  className="py-3.5 flex items-start justify-between gap-4"
+                  className="py-3.5 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-4"
                   style={{ borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.04)' }}
                 >
                   <div className="flex items-start gap-3">
