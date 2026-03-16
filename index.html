@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -9,12 +9,25 @@
       content="Portafolio de José Le Blanc — Ingeniero Civil en Computación e Informática. Full-Stack Developer con stack MERN, React y Power BI."
     />
     <title>José Le Blanc — Full-Stack Developer</title>
+
+    <!-- Preconnect corregido: gstatic necesita crossorigin -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Fuentes no bloqueantes: media=print + onload trick -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap"
+      media="print"
+      onload="this.media = 'all'"
     />
+    <!-- Fallback para JS desactivado -->
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap"
+      />
+    </noscript>
   </head>
 
   <body>
