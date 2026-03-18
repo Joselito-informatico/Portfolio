@@ -73,7 +73,7 @@ export default function ContactSection() {
         >
           <motion.h2
             variants={shouldReduce ? undefined : fadeUp}
-            className="font-syne text-4xl sm:text-5xl md:text-6xl font-black leading-none tracking-tight mb-6 clr-text"
+            className="font-display font-bold leading-none mb-6 clr-text" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
           >
             Hablemos<span className="clr-accent">.</span>
           </motion.h2>
@@ -193,7 +193,7 @@ export default function ContactSection() {
         transition={{ delay: 0.3, duration: 0.5 }}
       >
         <span className="text-xs" style={{ color: 'rgba(255,255,255,0.18)' }}>
-          © {new Date().getFullYear()} José Le Blanc — Diseñado y construido con React + Vite + Tailwind
+          © {new Date().getFullYear()} José Le Blanc Aravena — Diseñado y construido con React + Vite + Tailwind
         </span>
         <a href="#hero" className="text-xs font-medium clr-muted hover-accent">
           Volver arriba ↑

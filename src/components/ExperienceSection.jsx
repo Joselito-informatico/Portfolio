@@ -7,10 +7,9 @@ const EXPERIENCE = [
     role: 'Desarrollador de Sistema de Tickets',
     type: 'Práctica profesional',
     period: 'Feb 2025 — Abr 2025',
-    current: false,
     bullets: [
-      'Plataforma MERN completa de gestión de incidencias con chatbot inteligente integrado.',
-      'Diseñé esquemas NoSQL y optimicé consultas para visualización de métricas en tiempo real.',
+      'Desarrollé una plataforma MERN completa de gestión de incidencias con chatbot inteligente integrado.',
+      'Diseñé esquemas NoSQL y optimicé consultas para visualizar métricas operativas en tiempo real.',
       'Entregué documentación técnica completa y manual de usuario.',
     ],
     tech: ['React', 'Node.js', 'Express', 'MongoDB'],
@@ -20,12 +19,11 @@ const EXPERIENCE = [
     id: 2,
     company: 'Freelance',
     role: 'Desarrollador Full-Stack',
-    type: 'Proyecto freelance',
+    type: 'Proyecto independiente',
     period: 'Sept 2024 — Oct 2024',
-    current: false,
     bullets: [
-      'Sistema HelpDesk en PHP + MySQL para automatizar seguimiento de solicitudes técnicas.',
-      'Reduje tiempos de respuesta promedio mediante flujo de atención estructurado.',
+      'Construí un sistema HelpDesk en PHP + MySQL para automatizar el seguimiento de solicitudes técnicas.',
+      'Reduje los tiempos de respuesta promedio mediante un flujo de atención estructurado.',
       'Entregué documentación técnica y manuales de usuario al cliente.',
     ],
     tech: ['PHP', 'MySQL', 'HTML', 'CSS'],
@@ -37,11 +35,10 @@ const EXPERIENCE = [
     role: 'Técnico en Mantención Informática',
     type: 'Actividad profesional universitaria',
     period: 'Jun 2025 — Ago 2025',
-    current: false,
     bullets: [
-      'Diagnóstico y mantención preventiva de infraestructura informática del liceo.',
-      'Reacondicionamiento de equipos en desuso y actualización de sistemas operativos.',
-      'Elaboración de informe técnico con recomendaciones de mejora continua.',
+      'Realicé diagnóstico y mantención preventiva de la infraestructura informática del liceo.',
+      'Reacondicioné equipos en desuso y actualicé sistemas operativos y controladores.',
+      'Elaboré un informe técnico detallado con el estado inicial y recomendaciones de mejora.',
     ],
     tech: ['Linux', 'Hardware', 'Redes'],
     github: null,
@@ -49,8 +46,8 @@ const EXPERIENCE = [
 ]
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] } },
+  hidden:   { opacity: 0, y: 24 },
+  visible:  { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] } },
 }
 
 export default function ExperienceSection() {
@@ -74,110 +71,83 @@ export default function ExperienceSection() {
       </motion.div>
 
       <motion.h2
-        className="font-syne text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-16 clr-text"
+        className="font-display font-bold leading-tight mb-16 clr-text"
+        style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}
         initial={shouldReduce ? false : { opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.55, delay: 0.05 }}
       >
-        Dónde he{' '}
-        <span className="clr-accent">trabajado.</span>
+        Dónde he <span className="clr-accent">trabajado.</span>
       </motion.h2>
 
       {/* Timeline */}
       <div className="relative">
-        {/* Línea vertical */}
         <div
-          className="absolute left-0 top-0 bottom-0 w-px hidden md:block"
+          className="absolute left-0 top-2 bottom-8 w-px hidden md:block"
           style={{ backgroundColor: 'rgba(255,255,255,0.06)' }}
         />
 
-        <div className="flex flex-col gap-0">
+        <div className="flex flex-col">
           {EXPERIENCE.map((item, i) => (
             <motion.div
               key={item.id}
-              className="relative md:pl-12 pb-12 last:pb-0"
+              className="relative md:pl-10 pb-10 last:pb-0"
               variants={shouldReduce ? undefined : fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: i * 0.08 }}
             >
-              {/* Dot en la línea */}
+              {/* Dot */}
               <div
-                className="absolute left-0 top-1 w-2 h-2 rounded-full -translate-x-[3px] hidden md:block"
-                style={{ backgroundColor: item.current ? 'var(--color-accent)' : 'rgba(255,255,255,0.2)' }}
+                className="absolute left-0 top-2 w-2 h-2 rounded-full -translate-x-[3px] hidden md:block"
+                style={{ backgroundColor: 'rgba(0,255,136,0.4)', border: '1px solid rgba(0,255,136,0.6)' }}
               />
-              {/* Dot pulsante si es current */}
-              {item.current && (
-                <div
-                  className="absolute left-0 top-1 w-2 h-2 rounded-full -translate-x-[3px] animate-ping hidden md:block"
-                  style={{ backgroundColor: 'var(--color-accent)', opacity: 0.4 }}
-                />
-              )}
 
-              {/* Card */}
               <div
-                className="p-6 transition-all duration-200 group"
-                style={{
-                  backgroundColor: 'var(--color-surface)',
-                  border: '1px solid rgba(255,255,255,0.06)',
-                }}
+                className="p-5 sm:p-6"
+                style={{ backgroundColor: 'var(--color-surface)', border: '1px solid rgba(255,255,255,0.06)' }}
               >
-                {/* Top row */}
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-1">
+                {/* Header */}
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-4">
                   <div>
                     <span className="text-xs font-semibold tracking-[0.15em] uppercase clr-accent block mb-1">
                       {item.type}
                     </span>
-                    <h3 className="font-syne text-lg sm:text-xl font-black leading-tight clr-text">
+                    <h3 className="font-display font-semibold text-base sm:text-lg clr-text leading-snug">
                       {item.role}
                     </h3>
-                    <p className="text-sm font-medium mt-0.5 clr-muted">
-                      {item.company}
-                    </p>
+                    <p className="text-sm mt-0.5 clr-muted">{item.company}</p>
                   </div>
-                  <span
-                    className="text-xs font-medium shrink-0 mt-1 sm:mt-0"
-                    style={{ color: 'rgba(255,255,255,0.3)' }}
-                  >
+                  <span className="text-xs mt-1 sm:mt-0 shrink-0" style={{ color: 'rgba(255,255,255,0.28)' }}>
                     {item.period}
                   </span>
                 </div>
 
-                {/* Divider */}
-                <div className="my-4" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }} />
+                <div className="mb-4" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }} />
 
-                {/* Bullets */}
+                {/* Bullets — primera persona */}
                 <ul className="flex flex-col gap-2 mb-5">
                   {item.bullets.map((b, bi) => (
-                    <li key={bi} className="flex items-start gap-2.5 text-sm clr-muted">
-                      <span className="mt-1.5 shrink-0 w-1 h-1 rounded-full" style={{ backgroundColor: 'rgba(0,255,136,0.5)' }} />
+                    <li key={bi} className="flex items-start gap-2.5 text-sm clr-muted leading-relaxed">
+                      <span className="mt-2 shrink-0 w-1 h-1 rounded-full" style={{ backgroundColor: 'rgba(0,255,136,0.5)' }} />
                       {b}
                     </li>
                   ))}
                 </ul>
 
-                {/* Footer: tech + link */}
+                {/* Tech + link */}
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <ul className="flex flex-wrap gap-2">
                     {item.tech.map((t) => (
-                      <li
-                        key={t}
-                        className="text-xs font-medium px-2.5 py-1 clr-muted"
-                        style={{ border: '1px solid rgba(255,255,255,0.07)' }}
-                      >
+                      <li key={t} className="text-xs font-medium px-2.5 py-1 clr-muted" style={{ border: '1px solid rgba(255,255,255,0.07)' }}>
                         {t}
                       </li>
                     ))}
                   </ul>
                   {item.github && (
-                    <a
-                      href={item.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-medium clr-muted hover-accent"
-                    >
+                    <a href={item.github} target="_blank" rel="noopener noreferrer" className="text-xs font-medium clr-muted hover-accent">
                       Ver repositorio →
                     </a>
                   )}

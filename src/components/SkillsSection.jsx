@@ -48,7 +48,7 @@ export default function SkillsSection() {
 
       {/* Headline */}
       <motion.h2
-        className="font-syne text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-16 max-w-xl clr-text"
+        className="font-display font-bold leading-tight mb-16 max-w-xl clr-text" style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}
         initial={shouldReduce ? false : { opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

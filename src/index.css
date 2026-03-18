@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --color-bg: #0a0a0a;
+  --color-bg:      #0a0a0a;
   --color-surface: #111111;
-  --color-accent: #00FF88;
-  --color-text: #e8e8e8;
-  --color-muted: #666666;
+  --color-accent:  #00FF88;
+  --color-text:    #e8e8e8;
+  --color-muted:   #777777;   /* subido de #666 a #777 — mejor legibilidad */
 }
 
 html {
@@ -18,28 +18,28 @@ body {
   color: var(--color-text);
   font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── Tipografía ─────────────────────────────── */
-/* Body ya hereda DM Sans — no repetir inline.  */
-/* Usar .font-syne para headings con Syne.       */
-.font-syne {
-  font-family: 'Syne', sans-serif;
+/* ── Tipografía ──────────────────────────── */
+.font-display {
+  font-family: 'Outfit', sans-serif;
 }
 
-/* ── Colores de texto ───────────────────────── */
+/* ── Colores semánticos ──────────────────── */
 .clr-accent { color: var(--color-accent); }
-.clr-muted  { color: var(--color-muted); }
-.clr-text   { color: var(--color-text); }
+.clr-muted  { color: var(--color-muted);  }
+.clr-text   { color: var(--color-text);   }
 
-/* ── Hover de color (reemplaza onMouseEnter) ── */
+/* ── Hover helpers ───────────────────────── */
 .hover-accent { transition: color 0.2s; }
 .hover-accent:hover { color: var(--color-accent); }
 
 .hover-text { transition: color 0.2s; }
 .hover-text:hover { color: var(--color-text); }
 
-/* ── Cursor personalizado ───────────────────────────────────────────── */
+/* ── Cursor personalizado ────────────────── */
 @media (hover: hover) {
   .custom-cursor-dot {
     position: fixed;
@@ -52,7 +52,7 @@ body {
     pointer-events: none;
     z-index: 9999;
     will-change: transform;
-    transition: width 0.2s, height 0.2s, top 0.2s, left 0.2s, opacity 0.2s;
+    transition: width .2s, height .2s, top .2s, left .2s, opacity .2s;
   }
 
   .custom-cursor-follower {
@@ -61,12 +61,12 @@ body {
     left: -16px;
     width: 32px;
     height: 32px;
-    border: 1px solid rgba(0, 255, 136, 0.35);
+    border: 1px solid rgba(0,255,136,0.35);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9998;
     will-change: transform;
-    transition: width 0.25s, height 0.25s, top 0.25s, left 0.25s, opacity 0.2s;
+    transition: width .25s, height .25s, top .25s, left .25s, opacity .2s;
   }
 
   .custom-cursor-dot.cursor-expanded {
@@ -82,6 +82,6 @@ body {
     left: -24px;
     width: 48px;
     height: 48px;
-    border-color: rgba(0, 255, 136, 0.5);
+    border-color: rgba(0,255,136,0.5);
   }
 }

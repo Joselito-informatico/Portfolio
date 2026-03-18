@@ -30,7 +30,7 @@ export default function ProjectsSection() {
           </span>
           <div className="h-px flex-1 max-w-[48px]" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
         </div>
-        <h2 className="font-syne text-3xl sm:text-4xl md:text-5xl font-black leading-tight clr-text">
+        <h2 className="font-display font-bold leading-tight clr-text" style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}>
           Lo que he construido
         </h2>
       </motion.div>

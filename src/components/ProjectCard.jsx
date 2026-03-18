@@ -46,7 +46,7 @@ function FeaturedCard({ title, tagline, description, tech, github, live }) {
             <span className="text-xs font-semibold tracking-[0.2em] uppercase mb-3 block clr-accent">
               Proyecto destacado
             </span>
-            <h3 className="font-syne text-2xl sm:text-3xl md:text-4xl font-black leading-tight clr-text">
+            <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold leading-tight clr-text">
               {title}
             </h3>
           </div>
@@ -119,7 +119,7 @@ function NormalCard({ title, tagline, description, tech, github, live }) {
 
       <div className="p-5 sm:p-6 md:p-7 flex flex-col flex-1">
         <div className="flex items-start justify-between gap-3 mb-4">
-          <h3 className="font-syne text-xl font-black leading-tight clr-text">
+          <h3 className="font-display text-xl font-bold leading-tight clr-text">
             {title}
           </h3>
 
@@ -189,7 +189,7 @@ export function WIPCard({ title, tagline, description, tech }) {
       </div>
 
       <div className="p-5 sm:p-6 md:p-7 flex flex-col flex-1">
-        <h3 className="font-syne text-xl font-black leading-tight clr-text mb-2 pr-28">
+        <h3 className="font-display text-xl font-bold leading-tight clr-text mb-2 pr-28">
           {title}
         </h3>
         <p className="text-sm font-medium mb-3 clr-text" style={{ opacity: 0.55 }}>
