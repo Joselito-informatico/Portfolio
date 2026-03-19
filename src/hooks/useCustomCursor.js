@@ -2,7 +2,8 @@ import { useEffect, useRef } from 'react'
 
 /**
  * Cursor personalizado con punto principal + lag suave.
- * Retorna ref para el dot y el follower.
+ * Usa event delegation en document para capturar elementos
+ * renderizados dinámicamente por Framer Motion.
  */
 export function useCustomCursor() {
   const dotRef      = useRef(null)
@@ -21,18 +22,23 @@ export function useCustomCursor() {
 
     const onMove = (e) => {
       pos.current = { x: e.clientX, y: e.clientY }
-      // Dot sigue inmediatamente
       dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`
     }
 
-    const onEnterLink = () => {
-      dot.classList.add('cursor-expanded')
-      follower.classList.add('cursor-expanded')
+    // Event delegation — captura hover en cualquier elemento interactivo
+    // independientemente de cuándo fue renderizado al DOM
+    const onMouseOver = (e) => {
+      if (e.target.closest('a, button, [role="button"]')) {
+        dot.classList.add('cursor-expanded')
+        follower.classList.add('cursor-expanded')
+      }
     }
 
-    const onLeaveLink = () => {
-      dot.classList.remove('cursor-expanded')
-      follower.classList.remove('cursor-expanded')
+    const onMouseOut = (e) => {
+      if (e.target.closest('a, button, [role="button"]')) {
+        dot.classList.remove('cursor-expanded')
+        follower.classList.remove('cursor-expanded')
+      }
     }
 
     // Follower con lag via RAF
@@ -45,23 +51,16 @@ export function useCustomCursor() {
     }
 
     document.addEventListener('mousemove', onMove)
-
-    // Expandir en links, botones y cards
-    const interactives = document.querySelectorAll('a, button, [role="button"]')
-    interactives.forEach((el) => {
-      el.addEventListener('mouseenter', onEnterLink)
-      el.addEventListener('mouseleave', onLeaveLink)
-    })
+    document.addEventListener('mouseover', onMouseOver)
+    document.addEventListener('mouseout', onMouseOut)
 
     raf.current = requestAnimationFrame(animate)
     document.body.style.cursor = 'none'
 
     return () => {
       document.removeEventListener('mousemove', onMove)
-      interactives.forEach((el) => {
-        el.removeEventListener('mouseenter', onEnterLink)
-        el.removeEventListener('mouseleave', onLeaveLink)
-      })
+      document.removeEventListener('mouseover', onMouseOver)
+      document.removeEventListener('mouseout', onMouseOut)
       cancelAnimationFrame(raf.current)
       document.body.style.cursor = ''
     }

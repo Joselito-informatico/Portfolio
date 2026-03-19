@@ -5,12 +5,14 @@
   --color-surface: #111111;
   --color-accent:  #00FF88;
   --color-text:    #e8e8e8;
-  --color-muted:   #777777;   /* subido de #666 a #777 — mejor legibilidad */
+  --color-muted:   #777777;
 }
 
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  /* Fix: evita que la navbar fija tape el contenido al navegar por anchors */
+  scroll-padding-top: 80px;
 }
 
 body {

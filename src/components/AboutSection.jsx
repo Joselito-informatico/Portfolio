@@ -10,10 +10,10 @@ const CERTIFICATIONS = [
 ]
 
 const AVAILABILITY = [
-  { label: 'Arica',             icon: 'map'   },
-  { label: 'Santiago',          icon: 'map'   },
-  { label: 'Puerto Montt',      icon: 'map'   },
-  { label: 'Remoto',            icon: 'wifi'  },
+  { label: 'Arica',              icon: 'map'   },
+  { label: 'Santiago',           icon: 'map'   },
+  { label: 'Puerto Montt',       icon: 'map'   },
+  { label: 'Remoto',             icon: 'wifi'  },
   { label: 'Traslado inmediato', icon: 'arrow' },
 ]
 
@@ -21,6 +21,7 @@ const EDUCATION = [
   { degree: 'Ingeniero Civil en Computación e Informática',        highlight: true  },
   { degree: 'Ingeniero de Ejecución en Computación e Informática', highlight: false },
   { degree: 'Licenciado en Ciencias de la Ingeniería',             highlight: false },
+  { degree: 'Bachiller en Ingeniería',                             highlight: false },
 ]
 
 const fadeUp = {
@@ -89,7 +90,7 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Bio — primera persona */}
+          {/* Bio */}
           <motion.div variants={shouldReduce ? undefined : fadeUp}>
             <h2
               className="font-display font-bold leading-tight mb-5 clr-text"
@@ -100,13 +101,14 @@ export default function AboutSection() {
               problemas reales.
             </h2>
             <p className="text-sm leading-relaxed mb-3 clr-muted">
-              Soy Ingeniero Civil en Computación e Informática, egresado de la Universidad de Tarapacá en 2025.
-              Me gradué con distinción en Ingeniería de Ejecución y aprobado por unanimidad en el grado Civil.
+              Soy Ingeniero Civil en Computación e Informática egresado de la Universidad
+              de Tarapacá en 2025. Me especializo en desarrollo Full-Stack MERN y
+              analítica con Power BI.
             </p>
             <p className="text-sm leading-relaxed clr-muted">
-              Me especializo en Full-Stack MERN y analítica con Power BI. Me interesa la intersección
-              entre ingeniería de software y decisiones estratégicas: sistemas que no solo funcionan,
-              sino que generan información útil.
+              Me interesa la intersección entre ingeniería de software y decisiones
+              estratégicas — sistemas que no solo funcionan, sino que generan información
+              útil para quien los usa.
             </p>
           </motion.div>
 
@@ -188,7 +190,13 @@ export default function AboutSection() {
                     className="shrink-0 w-1 h-1 rounded-full mt-2"
                     style={{ backgroundColor: highlight ? 'var(--color-accent)' : 'rgba(255,255,255,0.2)' }}
                   />
-                  <span className="text-sm" style={{ color: highlight ? 'var(--color-text)' : 'rgba(232,232,232,0.65)', fontWeight: highlight ? 500 : 400 }}>
+                  <span
+                    className="text-sm"
+                    style={{
+                      color:      highlight ? 'var(--color-text)' : 'rgba(232,232,232,0.65)',
+                      fontWeight: highlight ? 500 : 400,
+                    }}
+                  >
                     {degree}
                   </span>
                 </div>
