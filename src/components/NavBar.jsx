@@ -88,10 +88,10 @@ export default function NavBar() {
           })}
         </nav>
 
-        {/* CV */}
+        {/* CV — Desktop: href sin acento, nombre exacto del archivo en public/ */}
         <a
-          href="/CV_Jos%C3%A9_Le_Blanc.pdf"
-          download
+          href="/CV_Jose_Le_Blanc.pdf"
+          download="CV_Jose_Le_Blanc.pdf"
           className="hidden md:inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 border transition-all duration-200 clr-accent"
           style={{ borderColor: 'var(--color-accent)' }}
           onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--color-accent)'; e.currentTarget.style.color = '#0a0a0a' }}
@@ -137,7 +137,15 @@ export default function NavBar() {
                 {label}
               </a>
             ))}
-            <a href="/CV_Jos%C3%A9_Le_Blanc.pdf" download className="text-sm font-semibold w-fit clr-accent" onClick={() => setMenuOpen(false)}>
+
+            {/* CV — Mobile: estilos consistentes con la paleta */}
+            <a
+              href="/CV_Jose_Le_Blanc.pdf"
+              download="CV_Jose_Le_Blanc.pdf"
+              className="text-sm font-semibold px-4 py-2.5 text-center transition-colors duration-200 clr-accent"
+              style={{ border: '1px solid var(--color-accent)' }}
+              onClick={() => setMenuOpen(false)}
+            >
               Descargar CV ↓
             </a>
           </motion.div>
