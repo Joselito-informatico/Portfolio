@@ -180,16 +180,29 @@ export function WIPCard({ title, tagline, description, tech }) {
         opacity: 0.7,
       }}
     >
-      {/* Badge */}
-      <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-semibold tracking-[0.15em] uppercase"
-        style={{ backgroundColor: 'rgba(0,255,136,0.08)', border: '1px solid rgba(0,255,136,0.2)', color: 'var(--color-accent)' }}
-      >
-        <span className="w-1 h-1 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent)' }} />
-        En desarrollo
-      </div>
-
       <div className="p-5 sm:p-6 md:p-7 flex flex-col flex-1">
-        <h3 className="font-display text-xl font-bold leading-tight clr-text mb-2 pr-28">
+
+        {/*
+          Fix bug: badge era absolute top-4 right-4 con pr-28 en el título.
+          En mobile 375px ese pr-28 (112px) dejaba muy poco espacio al texto.
+          Solución: badge en flujo normal (inline-flex) antes del título,
+          posición absoluta solo en sm+ donde hay más espacio horizontal.
+        */}
+        <div
+          className="inline-flex sm:absolute sm:top-4 sm:right-4 self-start sm:self-auto
+                     items-center gap-1.5 px-2.5 py-1 mb-3 sm:mb-0
+                     text-[10px] font-semibold tracking-[0.15em] uppercase"
+          style={{
+            backgroundColor: 'rgba(0,255,136,0.08)',
+            border: '1px solid rgba(0,255,136,0.2)',
+            color: 'var(--color-accent)',
+          }}
+        >
+          <span className="w-1 h-1 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent)' }} />
+          En desarrollo
+        </div>
+
+        <h3 className="font-display text-xl font-bold leading-tight clr-text mb-2">
           {title}
         </h3>
         <p className="text-sm font-medium mb-3 clr-text" style={{ opacity: 0.55 }}>

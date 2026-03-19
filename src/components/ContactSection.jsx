@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Github, Linkedin, Copy, Check } from 'lucide-react'
 import { useToast } from './ToastProvider'
@@ -34,9 +35,13 @@ const stagger = {
 export default function ContactSection() {
   const shouldReduce = useReducedMotion()
   const toast        = useToast()
+  // Restaurado: estado visual del botón independiente del toast
+  const [copied, setCopied] = useState(false)
 
   function handleCopy() {
     navigator.clipboard.writeText(EMAIL).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2200)
       toast('Email copiado al portapapeles', { type: 'success' })
     }).catch(() => {
       toast('No se pudo copiar — intenta manualmente', { type: 'error' })
@@ -97,13 +102,21 @@ export default function ContactSection() {
               >
                 {EMAIL}
               </a>
+              {/* Botón con feedback visual propio + toast */}
               <button
                 onClick={handleCopy}
                 aria-label="Copiar email al portapapeles"
-                className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium transition-all duration-200 self-start xs:self-auto clr-muted"
-                style={{ border: '1px solid rgba(255,255,255,0.1)' }}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium transition-all duration-200 self-start xs:self-auto"
+                style={{
+                  border:          `1px solid ${copied ? 'rgba(0,255,136,0.4)' : 'rgba(255,255,255,0.1)'}`,
+                  color:           copied ? 'var(--color-accent)' : 'var(--color-muted)',
+                  backgroundColor: copied ? 'rgba(0,255,136,0.05)' : 'transparent',
+                }}
               >
-                <Copy size={11} /> Copiar
+                {copied
+                  ? <><Check size={11} /> Copiado</>
+                  : <><Copy  size={11} /> Copiar</>
+                }
               </button>
             </div>
           </motion.div>
