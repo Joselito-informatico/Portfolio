@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Github, Linkedin, Copy, Check } from 'lucide-react'
+import { useToast } from './ToastProvider'
 
 const EMAIL = 'ji.leblanc.aravena@gmail.com'
 
@@ -33,12 +33,13 @@ const stagger = {
 
 export default function ContactSection() {
   const shouldReduce = useReducedMotion()
-  const [copied, setCopied] = useState(false)
+  const toast        = useToast()
 
   function handleCopy() {
     navigator.clipboard.writeText(EMAIL).then(() => {
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2200)
+      toast('Email copiado al portapapeles', { type: 'success' })
+    }).catch(() => {
+      toast('No se pudo copiar — intenta manualmente', { type: 'error' })
     })
   }
 
@@ -89,7 +90,6 @@ export default function ContactSection() {
             <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3 clr-muted">
               Email
             </p>
-            {/* Flex-col en mobile para evitar overflow del email largo */}
             <div className="flex flex-col xs:flex-row xs:flex-wrap xs:items-center gap-3">
               <a
                 href={`mailto:${EMAIL}`}
@@ -100,17 +100,10 @@ export default function ContactSection() {
               <button
                 onClick={handleCopy}
                 aria-label="Copiar email al portapapeles"
-                className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium transition-all duration-200 self-start xs:self-auto"
-                style={{
-                  border:          `1px solid ${copied ? 'rgba(0,255,136,0.4)' : 'rgba(255,255,255,0.1)'}`,
-                  color:           copied ? 'var(--color-accent)' : 'var(--color-muted)',
-                  backgroundColor: copied ? 'rgba(0,255,136,0.05)' : 'transparent',
-                }}
+                className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium transition-all duration-200 self-start xs:self-auto clr-muted"
+                style={{ border: '1px solid rgba(255,255,255,0.1)' }}
               >
-                {copied
-                  ? <><Check size={11} /> Copiado</>
-                  : <><Copy  size={11} /> Copiar</>
-                }
+                <Copy size={11} /> Copiar
               </button>
             </div>
           </motion.div>
@@ -181,7 +174,7 @@ export default function ContactSection() {
         </motion.div>
       </div>
 
-      {/* Footer — mt-16 en mobile (mt-24 es excesivo en pantalla chica) */}
+      {/* Footer */}
       <motion.div
         className="mt-16 md:mt-24 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
         style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
