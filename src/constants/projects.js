@@ -7,7 +7,7 @@ export const PROJECTS = [
       'Editor en tiempo real con esquemas JSON personalizados y renderizado dinámico de componentes. Optimización automática para rastreadores de candidatos (ATS).',
     tech: ['React', 'Vite', 'TypeScript', 'Tailwind CSS'],
     github: 'https://github.com/Joselito-informatico/resumai-studio',
-    live: 'https://cv-creator-one-sigma.vercel.app',
+    live: 'https://resumai-studio.vercel.app',
   },
   {
     id: 2,
