@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Github, Linkedin, Copy, Check } from 'lucide-react'
 
-// Mail removido — no se usaba en JSX
-
 const EMAIL = 'ji.leblanc.aravena@gmail.com'
 
 const LINKS = [
@@ -73,14 +71,15 @@ export default function ContactSection() {
         >
           <motion.h2
             variants={shouldReduce ? undefined : fadeUp}
-            className="font-display font-bold leading-none mb-6 clr-text" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
+            className="font-display font-bold leading-none mb-6 clr-text"
+            style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
           >
             Hablemos<span className="clr-accent">.</span>
           </motion.h2>
 
           <motion.p
             variants={shouldReduce ? undefined : fadeUp}
-            className="text-sm md:text-base leading-relaxed mb-10 max-w-sm clr-muted"
+            className="text-sm md:text-base leading-relaxed mb-8 max-w-sm clr-muted"
           >
             Estoy disponible para posiciones full-time, freelance o proyectos puntuales.
             Si tienes algo en mente, escríbeme — respondo rápido.
@@ -90,17 +89,18 @@ export default function ContactSection() {
             <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3 clr-muted">
               Email
             </p>
-            <div className="flex flex-wrap items-center gap-3">
+            {/* Flex-col en mobile para evitar overflow del email largo */}
+            <div className="flex flex-col xs:flex-row xs:flex-wrap xs:items-center gap-3">
               <a
                 href={`mailto:${EMAIL}`}
-                className="text-sm sm:text-base font-medium clr-text hover-accent"
+                className="text-sm sm:text-base font-medium clr-text hover-accent break-all xs:break-normal"
               >
                 {EMAIL}
               </a>
               <button
                 onClick={handleCopy}
                 aria-label="Copiar email al portapapeles"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium transition-all duration-200"
+                className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium transition-all duration-200 self-start xs:self-auto"
                 style={{
                   border:          `1px solid ${copied ? 'rgba(0,255,136,0.4)' : 'rgba(255,255,255,0.1)'}`,
                   color:           copied ? 'var(--color-accent)' : 'var(--color-muted)',
@@ -156,9 +156,7 @@ export default function ContactSection() {
                   </p>
                 </div>
               </div>
-              <span
-                className="text-lg transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1 clr-accent"
-              >
+              <span className="text-lg transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1 clr-accent">
                 ↗
               </span>
             </motion.a>
@@ -183,9 +181,9 @@ export default function ContactSection() {
         </motion.div>
       </div>
 
-      {/* Footer */}
+      {/* Footer — mt-16 en mobile (mt-24 es excesivo en pantalla chica) */}
       <motion.div
-        className="mt-24 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+        className="mt-16 md:mt-24 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
         style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
         initial={shouldReduce ? false : { opacity: 0 }}
         whileInView={{ opacity: 1 }}

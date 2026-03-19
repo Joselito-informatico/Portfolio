@@ -83,6 +83,7 @@ export default function ExperienceSection() {
 
       {/* Timeline */}
       <div className="relative">
+        {/* Línea vertical — desktop */}
         <div
           className="absolute left-0 top-2 bottom-8 w-px hidden md:block"
           style={{ backgroundColor: 'rgba(255,255,255,0.06)' }}
@@ -92,22 +93,27 @@ export default function ExperienceSection() {
           {EXPERIENCE.map((item, i) => (
             <motion.div
               key={item.id}
-              className="relative md:pl-10 pb-10 last:pb-0"
+              className="relative md:pl-10 pb-6 sm:pb-10 last:pb-0"
               variants={shouldReduce ? undefined : fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
               transition={{ delay: i * 0.08 }}
             >
-              {/* Dot */}
+              {/* Dot — desktop */}
               <div
                 className="absolute left-0 top-2 w-2 h-2 rounded-full -translate-x-[3px] hidden md:block"
                 style={{ backgroundColor: 'rgba(0,255,136,0.4)', border: '1px solid rgba(0,255,136,0.6)' }}
               />
 
+              {/* Card con border-left en mobile como indicador de timeline */}
               <div
-                className="p-5 sm:p-6"
-                style={{ backgroundColor: 'var(--color-surface)', border: '1px solid rgba(255,255,255,0.06)' }}
+                className="p-5 sm:p-6 md:border-l-0"
+                style={{
+                  backgroundColor: 'var(--color-surface)',
+                  border: '1px solid rgba(255,255,255,0.06)',
+                  borderLeft: '2px solid rgba(0,255,136,0.35)',
+                }}
               >
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-4">
@@ -120,14 +126,17 @@ export default function ExperienceSection() {
                     </h3>
                     <p className="text-sm mt-0.5 clr-muted">{item.company}</p>
                   </div>
-                  <span className="text-xs mt-1 sm:mt-0 shrink-0" style={{ color: 'rgba(255,255,255,0.28)' }}>
+                  <span
+                    className="text-xs mt-1 sm:mt-0 shrink-0"
+                    style={{ color: 'rgba(255,255,255,0.28)' }}
+                  >
                     {item.period}
                   </span>
                 </div>
 
                 <div className="mb-4" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }} />
 
-                {/* Bullets — primera persona */}
+                {/* Bullets */}
                 <ul className="flex flex-col gap-2 mb-5">
                   {item.bullets.map((b, bi) => (
                     <li key={bi} className="flex items-start gap-2.5 text-sm clr-muted leading-relaxed">
@@ -147,7 +156,12 @@ export default function ExperienceSection() {
                     ))}
                   </ul>
                   {item.github && (
-                    <a href={item.github} target="_blank" rel="noopener noreferrer" className="text-xs font-medium clr-muted hover-accent">
+                    <a
+                      href={item.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-medium clr-muted hover-accent py-1"
+                    >
                       Ver repositorio →
                     </a>
                   )}

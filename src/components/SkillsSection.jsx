@@ -48,7 +48,8 @@ export default function SkillsSection() {
 
       {/* Headline */}
       <motion.h2
-        className="font-display font-bold leading-tight mb-16 max-w-xl clr-text" style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}
+        className="font-display font-bold leading-tight mb-16 max-w-xl clr-text"
+        style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}
         initial={shouldReduce ? false : { opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -60,58 +61,69 @@ export default function SkillsSection() {
 
       {/* Grupos */}
       <div className="flex flex-col gap-0">
-        {SKILLS.map((group) => (   // gi eliminado — no se usaba
+        {SKILLS.map((group) => (
           <motion.div
             key={group.category}
-            className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-4 md:gap-8 py-8"
+            className="py-6 sm:py-8"
             style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
             variants={shouldReduce ? undefined : fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
           >
-            <div className="flex items-start pt-0.5">
+            {/* Categoría — separación clara en mobile */}
+            <div className="mb-4 md:hidden">
               <span className="text-xs font-semibold tracking-[0.15em] uppercase clr-muted">
                 {group.category}
               </span>
             </div>
 
-            <motion.ul
-              className="flex flex-wrap gap-2"
-              variants={shouldReduce ? undefined : stagger}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              {group.items.map((item) => (
-                <motion.li
-                  key={item}
-                  variants={shouldReduce ? undefined : chipVariants}
-                  className="group inline-flex items-center gap-2 px-3.5 py-2 text-sm font-medium cursor-default select-none transition-all duration-200 clr-muted hover:clr-text"
-                  style={{
-                    border: '1px solid rgba(255,255,255,0.07)',
-                    backgroundColor: 'rgba(255,255,255,0.02)',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor     = 'rgba(0,255,136,0.3)'
-                    e.currentTarget.style.color           = 'var(--color-text)'
-                    e.currentTarget.style.backgroundColor = 'rgba(0,255,136,0.04)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor     = 'rgba(255,255,255,0.07)'
-                    e.currentTarget.style.color           = 'var(--color-muted)'
-                    e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.02)'
-                  }}
-                >
-                  {ICONS[item] && (
-                    <span className="clr-accent" style={{ opacity: 0.7 }}>
-                      {ICONS[item]}
-                    </span>
-                  )}
-                  {item}
-                </motion.li>
-              ))}
-            </motion.ul>
+            {/* Layout: columna en mobile, grid en desktop */}
+            <div className="md:grid md:grid-cols-[180px_1fr] md:gap-8 md:items-start">
+              {/* Categoría desktop */}
+              <div className="hidden md:flex items-start pt-0.5">
+                <span className="text-xs font-semibold tracking-[0.15em] uppercase clr-muted">
+                  {group.category}
+                </span>
+              </div>
+
+              <motion.ul
+                className="flex flex-wrap gap-2"
+                variants={shouldReduce ? undefined : stagger}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                {group.items.map((item) => (
+                  <motion.li
+                    key={item}
+                    variants={shouldReduce ? undefined : chipVariants}
+                    className="group inline-flex items-center gap-2 px-3.5 py-2 text-sm font-medium cursor-default select-none transition-all duration-200 clr-muted hover:clr-text"
+                    style={{
+                      border: '1px solid rgba(255,255,255,0.07)',
+                      backgroundColor: 'rgba(255,255,255,0.02)',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor     = 'rgba(0,255,136,0.3)'
+                      e.currentTarget.style.color           = 'var(--color-text)'
+                      e.currentTarget.style.backgroundColor = 'rgba(0,255,136,0.04)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor     = 'rgba(255,255,255,0.07)'
+                      e.currentTarget.style.color           = 'var(--color-muted)'
+                      e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.02)'
+                    }}
+                  >
+                    {ICONS[item] && (
+                      <span className="clr-accent" style={{ opacity: 0.7 }}>
+                        {ICONS[item]}
+                      </span>
+                    )}
+                    {item}
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </div>
           </motion.div>
         ))}
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }} />

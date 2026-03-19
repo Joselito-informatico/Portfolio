@@ -42,6 +42,12 @@ export default function NavBar() {
     }
   }, [menuOpen])
 
+  // Bloquear scroll del body cuando el menú mobile está abierto
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+
   return (
     <motion.header
       className="fixed top-0 left-0 right-0 z-50"
@@ -88,7 +94,7 @@ export default function NavBar() {
           })}
         </nav>
 
-        {/* CV — Desktop: href sin acento, nombre exacto del archivo en public/ */}
+        {/* CV — Desktop */}
         <a
           href="/CV_Jose_Le_Blanc.pdf"
           download="CV_Jose_Le_Blanc.pdf"
@@ -100,49 +106,62 @@ export default function NavBar() {
           CV ↓
         </a>
 
-        {/* Hamburger */}
+        {/* Hamburger — touch target mínimo 44×44px */}
         <button
-          className="md:hidden flex flex-col gap-1.5 p-1"
+          className="md:hidden flex items-center justify-center w-11 h-11 -mr-2"
           onClick={() => setMenuOpen((v) => !v)}
           aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={menuOpen}
         >
-          {[0, 1, 2].map((i) => (
-            <span
-              key={i}
-              className="block h-px w-5 transition-all duration-200 origin-center"
-              style={{
-                backgroundColor: 'var(--color-text)',
-                transform: i === 0 && menuOpen ? 'rotate(45deg) translateY(10px)' : i === 2 && menuOpen ? 'rotate(-45deg) translateY(-10px)' : 'none',
-                opacity: i === 1 && menuOpen ? 0 : 1,
-              }}
-            />
-          ))}
+          <span className="flex flex-col gap-[5px]">
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                className="block h-px w-5 transition-all duration-200 origin-center"
+                style={{
+                  backgroundColor: 'var(--color-text)',
+                  transform: i === 0 && menuOpen ? 'rotate(45deg) translateY(6px)' : i === 2 && menuOpen ? 'rotate(-45deg) translateY(-6px)' : 'none',
+                  opacity: i === 1 && menuOpen ? 0 : 1,
+                }}
+              />
+            ))}
+          </span>
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — links con área tocable de 44px mínimo */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="md:hidden flex flex-col px-6 pb-8 pt-4 gap-5"
-            style={{ backgroundColor: 'rgba(10,10,10,0.97)', backdropFilter: 'blur(16px)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
+            className="md:hidden flex flex-col px-6 pb-8 pt-2 gap-1"
+            style={{
+              backgroundColor: 'rgba(10,10,10,0.97)',
+              backdropFilter:  'blur(16px)',
+              borderBottom:    '1px solid rgba(255,255,255,0.05)',
+            }}
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.18 }}
           >
             {NAV_LINKS.map(({ label, href }) => (
-              <a key={href} href={href} className="text-sm font-medium clr-text" onClick={() => setMenuOpen(false)}>
+              <a
+                key={href}
+                href={href}
+                /* py-3 = 24px arriba + abajo → área tocable ~44px con el texto */
+                className="text-sm font-medium clr-text py-3 border-b"
+                style={{ borderColor: 'rgba(255,255,255,0.04)' }}
+                onClick={() => setMenuOpen(false)}
+              >
                 {label}
               </a>
             ))}
 
-            {/* CV — Mobile: estilos consistentes con la paleta */}
+            {/* CV — Mobile */}
             <a
               href="/CV_Jose_Le_Blanc.pdf"
               download="CV_Jose_Le_Blanc.pdf"
-              className="text-sm font-semibold px-4 py-2.5 text-center transition-colors duration-200 clr-accent"
+              className="mt-4 text-sm font-semibold px-4 py-3 text-center transition-colors duration-200 clr-accent"
               style={{ border: '1px solid var(--color-accent)' }}
               onClick={() => setMenuOpen(false)}
             >
