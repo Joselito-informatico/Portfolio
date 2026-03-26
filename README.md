@@ -1,6 +1,6 @@
 # José Le Blanc — Portfolio
 
-Personal portfolio built with React + Vite + Tailwind v4. Live at **[joseleblanc.dev](https://joseleblanc.dev)** _(or your Vercel URL)_.
+Personal portfolio built with React + Vite + Tailwind v4. Live at **[joseleblanc.dev]([https://joseleblanc.dev](https://portfolio-three-mauve-g2pw10q0al.vercel.app/))**.
 
 ## Stack
 
