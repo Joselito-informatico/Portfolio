@@ -1,9 +1,7 @@
-import { createContext, useCallback, useContext, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Check, X, Info, AlertTriangle } from 'lucide-react'
-
-// ── Context ───────────────────────────────────────────────────────────
-const ToastContext = createContext(null)
+import { ToastContext } from '../hooks/useToast'
 
 let _id = 0
 
@@ -118,11 +116,4 @@ export function ToastProvider({ children }) {
       </div>
     </ToastContext.Provider>
   )
-}
-
-// ── Hook ──────────────────────────────────────────────────────────────
-export function useToast() {
-  const ctx = useContext(ToastContext)
-  if (!ctx) throw new Error('useToast debe usarse dentro de <ToastProvider>')
-  return ctx
 }
