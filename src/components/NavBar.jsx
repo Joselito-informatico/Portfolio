@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useToast } from './ToastProvider'
+import { useToast } from '../hooks/useToast'
 
 const NAV_LINKS = [
   { label: 'Experiencia', href: '#experience' },

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Github, Linkedin, Copy, Check } from 'lucide-react'
-import { useToast } from './ToastProvider'
+import { useToast } from '../hooks/useToast'
 
 const EMAIL = 'ji.leblanc.aravena@gmail.com'
 

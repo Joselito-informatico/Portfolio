@@ -76,13 +76,18 @@ export default function AboutSection() {
               style={{ border: '1px solid rgba(0,255,136,0.2)' }}
             />
             <div className="relative overflow-hidden">
-              <img
-                src="/foto-perfil.png"
-                alt="José Le Blanc Aravena — Ingeniero Civil en Computación e Informática"
-                loading="lazy"
-                className="w-full object-cover object-top transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-[1.02]"
-                style={{ height: '480px', objectPosition: 'top center' }}
-              />
+              <picture>
+                <source srcSet="/foto-perfil.webp" type="image/webp" />
+                <img
+                  src="/foto-perfil.png"
+                  alt="José Le Blanc Aravena — Ingeniero Civil en Computación e Informática"
+                  loading="lazy"
+                  width="800"
+                  height="1729"
+                  className="w-full object-cover object-top transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-[1.02]"
+                  style={{ height: '480px', objectPosition: 'top center' }}
+                />
+              </picture>
               <div
                 className="absolute inset-0 transition-opacity duration-700 group-hover:opacity-0"
                 style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.3) 0%, transparent 60%)' }}
